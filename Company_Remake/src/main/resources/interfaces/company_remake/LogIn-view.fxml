@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="App" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#Dragg_AplicatiON" onMousePressed="#Press_Application" prefHeight="460.0" prefWidth="735.0" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.company_remake.LoginController">
+<AnchorPane fx:id="App" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#Dragg_AplicatiON" onMousePressed="#Press_Application" prefHeight="460.0" prefWidth="735.0" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.company_remake.Controllers">
    <children>
       <Pane fx:id="Log_Header" layoutX="94.0" prefHeight="56.0" prefWidth="548.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #2B2B2B;" visible="false">
          <children>
@@ -53,7 +56,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="Name_Header" layoutX="96.0" layoutY="-2.0" prefHeight="63.0" prefWidth="548.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #404040;" visible="false">
+      <Pane fx:id="Name_Header" layoutX="93.0" layoutY="-2.0" prefHeight="63.0" prefWidth="548.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #343434;">
          <children>
             <Label fx:id="Logged_Header_label" layoutX="88.0" layoutY="14.0" prefHeight="29.0" prefWidth="300.0" textFill="WHITE">
                <font>
@@ -77,113 +80,404 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="User_Buttons" layoutX="8.0" layoutY="70.0" prefHeight="382.0" prefWidth="74.0" style="-fx-background-color: TRANSPARENT;" visible="false">
+      <Pane fx:id="User_Buttons" layoutX="8.0" layoutY="60.0" prefHeight="398.0" prefWidth="74.0" style="-fx-background-color: TRANSPARENT;">
          <children>
-            <Label layoutX="-2.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #595959;" />
-            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="-4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="-2.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #454545;" />
+            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="-4.0" layoutY="8.0" onMouseClicked="#Create_Customer_Panel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Addclient.png" />
                </image>
             </ImageView>
+            <Label layoutX="-2.0" layoutY="100.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #686868;" />
+            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="-4.0" layoutY="108.0" onMouseClicked="#Create_Product_Panel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/try.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="-2.0" layoutY="200.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #8B8B8B;" />
+            <Label layoutX="-2.0" layoutY="300.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #aeaeae;" />
+            <ImageView fitHeight="78.0" fitWidth="74.0" layoutX="-2.0" layoutY="210.0" onMouseClicked="#Delete_User_panel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/Delete_user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="-2.0" layoutY="310.0" onMouseClicked="#Delete_item_panel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons8-delete-document-80.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="Admin_Buttons" layoutX="653.0" layoutY="70.0" prefHeight="382.0" prefWidth="74.0" style="-fx-background-color: TRANSPARENT;" visible="false">
+      <Pane fx:id="Admin_Buttons" layoutX="655.0" layoutY="60.0" prefHeight="398.0" prefWidth="74.0" style="-fx-background-color: TRANSPARENT;">
          <children>
-            <Label layoutX="-2.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #595959;" />
+            <Label layoutX="-2.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #454545;" />
             <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="-2.0" layoutY="8.0" onMouseClicked="#Create_worker_Button" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/NewAdministrator.png" />
                </image>
             </ImageView>
+            <Label layoutX="-2.0" layoutY="100.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #686868;" />
+            <Label layoutX="-2.0" layoutY="200.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #8B8B8B;" />
+            <Label layoutX="-2.0" layoutY="300.0" prefHeight="94.0" prefWidth="78.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #aeaeae;" />
+            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="-2.0" layoutY="108.0" onMouseClicked="#Create_worker_Button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/Log.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="-2.0" layoutY="208.0" onMouseClicked="#Create_worker_Button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/changeworker.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="74.0" layoutY="310.0" onMouseClicked="#Create_worker_Button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons8-delete-user-96.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <AnchorPane fx:id="Add_Admin" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #383838;" visible="false">
+      <AnchorPane fx:id="Add_Admin" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #454545;" visible="false">
          <children>
-            <Label layoutX="30.0" layoutY="80.0" prefHeight="22.0" prefWidth="78.0" text="Full name" textFill="WHITE">
+            <Label layoutX="30.0" layoutY="80.0" prefHeight="22.0" prefWidth="78.0" text="Name" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="30.0" layoutY="200.0" prefHeight="22.0" prefWidth="78.0" text="Password" textFill="WHITE">
+            <Label layoutX="30.0" layoutY="240.0" prefHeight="22.0" prefWidth="78.0" text="Password" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="30.0" layoutY="160.0" prefHeight="22.0" prefWidth="78.0" text="Email" textFill="WHITE">
+            <Label layoutX="30.0" layoutY="200.0" prefHeight="22.0" prefWidth="78.0" text="Email" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="240.0" prefHeight="22.0" prefWidth="140.0" text="Confirm Password" textFill="WHITE">
+            <Label layoutX="29.0" layoutY="280.0" prefHeight="22.0" prefWidth="140.0" text="Confirm Password" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="Name_Field" layoutX="180.0" layoutY="80.0" prefHeight="26.0" prefWidth="316.0" />
-            <TextField fx:id="Email_Field" layoutX="180.0" layoutY="160.0" prefHeight="26.0" prefWidth="316.0" />
-            <PasswordField fx:id="Password_Field" layoutX="180.0" layoutY="200.0" prefHeight="26.0" prefWidth="316.0" />
-            <PasswordField fx:id="CPassword_Field" layoutX="180.0" layoutY="240.0" prefHeight="26.0" prefWidth="316.0" />
-            <TextField fx:id="ID_Field" layoutX="180.0" layoutY="40.0" prefHeight="26.0" prefWidth="316.0" />
+            <TextField fx:id="W_Name_Field" layoutX="180.0" layoutY="80.0" prefHeight="26.0" prefWidth="316.0" />
+            <TextField fx:id="W_Email_Field" layoutX="180.0" layoutY="200.0" prefHeight="26.0" prefWidth="316.0" />
+            <PasswordField fx:id="W_Password_Field" layoutX="180.0" layoutY="240.0" prefHeight="26.0" prefWidth="316.0" />
+            <PasswordField fx:id="CW_Password_Field" layoutX="180.0" layoutY="280.0" prefHeight="26.0" prefWidth="316.0" />
+            <TextField fx:id="W_ID_Field" layoutX="180.0" layoutY="40.0" prefHeight="26.0" prefWidth="316.0" />
             <Label layoutX="30.0" layoutY="40.0" prefHeight="22.0" prefWidth="78.0" text="ID" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <ImageView fitHeight="56.0" fitWidth="67.0" layoutX="301.0" layoutY="290.0" onMouseClicked="#CreateWorker" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="56.0" fitWidth="67.0" layoutX="338.0" layoutY="303.0" onMouseClicked="#CreateWorker" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/icons8-enviado-64.png" />
                </image>
             </ImageView>
-            <Label layoutX="30.0" layoutY="280.0" text="Administrador" textFill="#fffefe">
+            <Label layoutX="30.0" layoutY="320.0" text="Administrador" textFill="#fffefe">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <CheckBox fx:id="Administrator_CB" layoutX="180.0" layoutY="280.0" mnemonicParsing="false">
+            <CheckBox fx:id="Administrator_CB" layoutX="180.0" layoutY="320.0" mnemonicParsing="false">
                <font>
                   <Font name="Liberation Sans Narrow" size="14.0" />
                </font>
             </CheckBox>
-            <TextField fx:id="Phone_Field" layoutX="180.0" layoutY="120.0" prefHeight="26.0" prefWidth="316.0" />
-            <Label layoutX="30.0" layoutY="120.0" prefHeight="22.0" prefWidth="78.0" text="Phone" textFill="WHITE">
+            <TextField fx:id="W_Phone_Field" layoutX="180.0" layoutY="160.0" prefHeight="26.0" prefWidth="316.0" />
+            <Label layoutX="30.0" layoutY="160.0" prefHeight="22.0" prefWidth="78.0" text="Phone" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="W_Surname_Field" layoutX="180.0" layoutY="120.0" prefHeight="26.0" prefWidth="316.0" />
+            <Label layoutX="30.0" layoutY="121.0" prefHeight="22.0" prefWidth="78.0" text="Surname" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="Logged" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #383838;" visible="false" />
-      <AnchorPane fx:id="Add_User" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #383838;">
+      <AnchorPane fx:id="Logged" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #343434;" visible="false" />
+      <AnchorPane fx:id="Add_User" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #454545;" visible="false">
          <children>
-            <Label layoutX="41.0" layoutY="59.0" prefHeight="22.0" prefWidth="78.0" text="Name" textFill="WHITE">
+            <Label layoutX="41.0" layoutY="60.0" prefHeight="22.0" prefWidth="78.0" text="Name" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="ID_Field1" layoutX="134.0" layoutY="58.0" prefHeight="26.0" prefWidth="316.0" />
-            <Label layoutX="16.0" layoutY="121.0" prefHeight="23.0" prefWidth="128.0" text="(Optinal)    ID" textFill="WHITE">
+            <TextField fx:id="C_Name_Field" layoutX="134.0" layoutY="60.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="16.0" layoutY="180.0" prefHeight="23.0" prefWidth="128.0" text="(Optinal)    ID" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="ID_Field11" layoutX="134.0" layoutY="119.0" prefHeight="26.0" prefWidth="316.0" />
-            <Label layoutX="49.0" layoutY="179.0" prefHeight="23.0" prefWidth="62.0" text="Phone" textFill="WHITE">
+            <TextField fx:id="C_ID_Field" layoutX="134.0" layoutY="180.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="49.0" layoutY="240.0" prefHeight="23.0" prefWidth="62.0" text="Phone" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="ID_Field111" layoutX="134.0" layoutY="178.0" prefHeight="26.0" prefWidth="316.0" />
-            <TextField fx:id="ID_Field1111" layoutX="134.0" layoutY="239.0" prefHeight="26.0" prefWidth="316.0" />
-            <Label layoutX="35.0" layoutY="241.0" prefHeight="23.0" prefWidth="90.0" text="Address" textFill="WHITE">
+            <TextField fx:id="C_Phone_Field" layoutX="134.0" layoutY="240.0" prefHeight="26.0" prefWidth="164.0" />
+            <TextField fx:id="C_Address_Field" layoutX="134.0" layoutY="300.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="35.0" layoutY="300.0" prefHeight="23.0" prefWidth="90.0" text="Address" textFill="WHITE">
                <font>
                   <Font name="Liberation Sans Narrow Bold" size="19.0" />
                </font>
             </Label>
-            <ImageView fitHeight="56.0" fitWidth="67.0" layoutX="236.0" layoutY="288.0" onMouseClicked="#CreateWorker" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="86.0" fitWidth="107.0" layoutX="365.0" layoutY="240.0" onMouseClicked="#Add_Customer_Button" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/icons8-enviar-64.png" />
                </image>
             </ImageView>
+            <ChoiceBox fx:id="Item_ChoiceBox" layoutX="333.0" layoutY="93.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="337.0" layoutY="59.0" prefHeight="22.0" prefWidth="78.0" text="Watch" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="C_Surname_Field" layoutX="134.0" layoutY="120.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="35.0" layoutY="120.0" prefHeight="22.0" prefWidth="78.0" text="Surname" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="Drivers_ChoiceBox" layoutX="333.0" layoutY="178.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="333.0" layoutY="146.0" prefHeight="23.0" prefWidth="98.0" text="Delivery guy" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
+      <AnchorPane fx:id="Products_Panel" layoutX="94.0" layoutY="70.0" onInputMethodTextChanged="#Get_Item_Quantity_Set" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #686868;" visible="false">
+         <children>
+            <TextField fx:id="Item_Name_field" layoutX="37.0" layoutY="95.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="37.0" layoutY="65.0" prefHeight="22.0" prefWidth="78.0" text="Name" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="23.0" prefHeight="31.0" prefWidth="140.0" text="New product" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="199.0" prefHeight="22.0" prefWidth="78.0" text="Quantity" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Item_Quantity_field" layoutX="37.0" layoutY="240.0" prefHeight="26.0" prefWidth="164.0" />
+            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="80.0" layoutY="274.0" onMouseClicked="#New_Object_Button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons8-save-64.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="312.0" layoutY="23.0" prefHeight="31.0" prefWidth="164.0" text="Search Product" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="Item_ChoiceBox_2" layoutX="312.0" layoutY="108.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="312.0" layoutY="77.0" prefHeight="22.0" prefWidth="78.0" text="Item" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="304.0" layoutY="153.0" prefHeight="22.0" prefWidth="78.0" text="Quantity :" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="Items_quantity_Label" alignment="CENTER" ellipsisString="" layoutX="382.0" layoutY="155.0" prefHeight="23.0" prefWidth="30.0" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Item_Modify_Quantity_field" layoutX="444.0" layoutY="221.0" prefHeight="26.0" prefWidth="32.0" text="0">
+               <font>
+                  <Font name="JetBrains Mono NL ExtraBold Italic" size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="304.0" layoutY="223.0" prefHeight="23.0" prefWidth="128.0" text="Modify Quantity :" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="355.0" layoutY="274.0" onMouseClicked="#setNewNumberUnits_Button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/modify_item.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="42.0" fitWidth="32.0" layoutX="417.0" layoutY="151.0" onMouseClicked="#Get_Item_Quantity_Set" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/search_item.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="37.0" layoutY="134.0" prefHeight="22.0" prefWidth="78.0" text="Type" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Type_Item_field" layoutX="37.0" layoutY="165.0" prefHeight="26.0" prefWidth="164.0" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="Delete_User_panel" layoutX="94.0" layoutY="68.0" onInputMethodTextChanged="#Get_Item_Quantity_Set" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #8B8B8B;">
+         <children>
+            <Label fx:id="Items_quantity_Label11" alignment="CENTER" ellipsisString="" layoutX="382.0" layoutY="155.0" prefHeight="23.0" prefWidth="30.0" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="42.0" layoutY="23.0" prefHeight="31.0" prefWidth="464.0" text="Write its Identication or its cellphone number">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Cellphone_Id_field" layoutX="174.0" layoutY="129.0" prefHeight="26.0" prefWidth="178.0" />
+            <Label layoutX="54.0" layoutY="192.0" prefHeight="31.0" prefWidth="90.0" text="Name">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="Name_Deletion_label" layoutX="145.0" layoutY="192.0" prefHeight="31.0" prefWidth="286.0" text="x">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="78.0" fitWidth="74.0" layoutX="226.0" layoutY="268.0" onMouseClicked="#Delete_User_Button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/Delete_user_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="403.0" layoutY="114.0" onMouseClicked="#Search_User_button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/search_item.png" />
+               </image>
+            </ImageView>
+            <RadioButton fx:id="Rphone" layoutX="274.0" layoutY="88.0" mnemonicParsing="false" text="Cell phone">
+               <toggleGroup>
+                  <ToggleGroup fx:id="id_or_phone" />
+               </toggleGroup>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="Ridentification" layoutX="215.0" layoutY="88.0" mnemonicParsing="false" toggleGroup="$id_or_phone">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="89.0" layoutY="88.0" prefHeight="22.0" prefWidth="111.0" text="Identification">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Delete_Product_panel" layoutX="94.0" layoutY="70.0" onInputMethodTextChanged="#Get_Item_Quantity_Set" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #aeaeae;" visible="false">
+         <children>
+            <Label layoutX="143.0" layoutY="33.0" prefHeight="31.0" prefWidth="261.0" text="Select a product to delete">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="Item_ChoiceBox_3" layoutX="51.0" layoutY="115.0" prefHeight="26.0" prefWidth="164.0" />
+            <Label layoutX="51.0" layoutY="82.0" prefHeight="22.0" prefWidth="78.0" text="Item">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="Items_quantity_Label1" alignment="CENTER" ellipsisString="" layoutX="382.0" layoutY="155.0" prefHeight="23.0" prefWidth="30.0" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="94.0" fitWidth="78.0" layoutX="94.0" layoutY="224.0" onMouseClicked="#Delete_Item" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons8-delete-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="42.0" fitWidth="32.0" layoutX="396.0" layoutY="89.0" onMouseClicked="#Details_Item_button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/search_item.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="310.0" layoutY="93.0" prefHeight="22.0" prefWidth="78.0" text="Details:">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="Type_label" alignment="CENTER" layoutX="351.0" layoutY="139.0" prefHeight="31.0" prefWidth="74.0">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font></Label>
+            <Label layoutX="300.0" layoutY="139.0" prefHeight="31.0" prefWidth="56.0" text="Type : ">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Name_label" alignment="CENTER" layoutX="354.0" layoutY="178.0" prefHeight="31.0" prefWidth="74.0">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="297.0" layoutY="178.0" prefHeight="31.0" prefWidth="62.0" text="Name : ">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="274.0" layoutY="224.0" prefHeight="31.0" prefWidth="86.0" text="Quantity : ">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Quantity_label" alignment="CENTER" contentDisplay="TOP" layoutX="361.0" layoutY="224.0" prefHeight="31.0" prefWidth="62.0" textOverrun="CLIP">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Logs_Workers_panel" layoutX="94.0" layoutY="70.0" onInputMethodTextChanged="#Get_Item_Quantity_Set" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #686868;" visible="false">
+         <children>
+            <Label layoutX="130.0" layoutY="33.0" prefHeight="31.0" prefWidth="261.0" text="Logs workers_panel">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="Items_quantity_Label12" alignment="CENTER" ellipsisString="" layoutX="382.0" layoutY="155.0" prefHeight="23.0" prefWidth="30.0" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Modify_workers_panel" layoutX="94.0" layoutY="70.0" onInputMethodTextChanged="#Get_Item_Quantity_Set" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #8B8B8B;" visible="false">
+         <children>
+            <Label layoutX="143.0" layoutY="33.0" prefHeight="31.0" prefWidth="261.0" text="Modify worker panel">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="Items_quantity_Label121" alignment="CENTER" ellipsisString="" layoutX="382.0" layoutY="155.0" prefHeight="23.0" prefWidth="30.0" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Delete_worker_panel" layoutX="94.0" layoutY="70.0" onInputMethodTextChanged="#Get_Item_Quantity_Set" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #aeaeae;" visible="false">
+         <children>
+            <Label layoutX="143.0" layoutY="33.0" prefHeight="31.0" prefWidth="261.0" text="Delete worker panel">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="Items_quantity_Label1211" alignment="CENTER" ellipsisString="" layoutX="382.0" layoutY="155.0" prefHeight="23.0" prefWidth="30.0" textFill="WHITE">
+               <font>
+                  <Font name="Liberation Sans Narrow Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

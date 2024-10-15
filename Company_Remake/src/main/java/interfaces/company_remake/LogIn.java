@@ -15,16 +15,12 @@ public class LogIn extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("LogIn-view.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LogIn-view.fxml")));
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.TRANSPARENT); //This remove application brinks
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
-        //root.setOnMouseDragged(mouseEvent -> {
-          //stage.setX(mouseEvent.getSceneX());
-            //stage.setY(mouseEvent.getSceneY());
-        //});
     }
 
     public static void main(String[] args) {

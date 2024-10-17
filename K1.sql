@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 15, 2024 at 03:13 AM
+-- Generation Time: Oct 17, 2024 at 05:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,13 +32,6 @@ CREATE TABLE `Deliveries` (
   `Address` varchar(250) NOT NULL,
   `Driver` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Deliveries`
---
-
-INSERT INTO `Deliveries` (`IDD`, `Address`, `Driver`) VALUES
-(1, 'FSAFSAFSA', 1);
 
 -- --------------------------------------------------------
 
@@ -76,9 +69,9 @@ CREATE TABLE `Logs` (
 --
 
 INSERT INTO `Logs` (`IDL`, `Log`) VALUES
-(1112759822, '2024-10-07 12:26:42'),
-(1112759822, '2024-10-14 11:41:29'),
-(1112759822, '2024-10-14 12:08:08');
+(1112759822, '2024-10-16 23:39:59'),
+(1112759822, '2024-10-16 23:43:19'),
+(1112759822, '2024-10-17 10:37:01');
 
 -- --------------------------------------------------------
 
@@ -106,8 +99,7 @@ INSERT INTO `Number_Units` (`IDO_2`, `Remainings`) VALUES
 (8, 1),
 (9, 1),
 (10, 1),
-(11, 1),
-(12, 0);
+(11, 1);
 
 -- --------------------------------------------------------
 
@@ -136,8 +128,50 @@ INSERT INTO `Objects` (`IDO`, `Type`, `Name`) VALUES
 (8, 'Watch', 'YOR'),
 (9, 'Watch', 'YOG'),
 (10, 'Watch', 'YOGR'),
-(11, 'Watch', 'DIB'),
-(12, 'REMOVED', 'REMOVED');
+(11, 'Watch', 'DIB');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REMOVED_OBJECTS`
+--
+
+CREATE TABLE `REMOVED_OBJECTS` (
+  `IDO` int(11) NOT NULL,
+  `Type` varchar(100) NOT NULL,
+  `Name` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REMOVED_USERS`
+--
+
+CREATE TABLE `REMOVED_USERS` (
+  `IDU` int(11) NOT NULL,
+  `CC` bigint(20) DEFAULT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Surname` varchar(100) NOT NULL,
+  `Phone` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REMOVED_WORKERS`
+--
+
+CREATE TABLE `REMOVED_WORKERS` (
+  `ID` bigint(20) NOT NULL,
+  `Admin` tinyint(4) NOT NULL,
+  `Created` datetime NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Surname` varchar(100) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Email` varchar(320) NOT NULL,
+  `Password` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -150,16 +184,8 @@ CREATE TABLE `Users` (
   `CC` bigint(20) DEFAULT NULL,
   `Name` varchar(100) NOT NULL,
   `Surname` varchar(100) NOT NULL,
-  `Phone` varchar(15) NOT NULL
+  `Phone` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Users`
---
-
-INSERT INTO `Users` (`IDU`, `CC`, `Name`, `Surname`, `Phone`) VALUES
-(1, NULL, 'SERGIO', 'IDARRAGA', '301481'),
-(2, NULL, 'REMOVED', 'REMOVED', 'REMOVED');
 
 -- --------------------------------------------------------
 
@@ -174,13 +200,6 @@ CREATE TABLE `Users_Objects_Deliveries` (
   `IDD_1` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `Users_Objects_Deliveries`
---
-
-INSERT INTO `Users_Objects_Deliveries` (`IDT`, `IDU_1`, `IDO_1`, `IDD_1`) VALUES
-(1, 1, 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -193,8 +212,8 @@ CREATE TABLE `Workers` (
   `Created` datetime NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Surname` varchar(100) NOT NULL,
-  `Phone` bigint(20) NOT NULL,
-  `Email` varchar(320) NOT NULL,
+  `Phone` varchar(15) DEFAULT NULL,
+  `Email` varchar(320) DEFAULT NULL,
   `Password` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -203,7 +222,7 @@ CREATE TABLE `Workers` (
 --
 
 INSERT INTO `Workers` (`ID`, `Admin`, `Created`, `Name`, `Surname`, `Phone`, `Email`, `Password`) VALUES
-(1112759822, 1, '2024-10-07 11:56:41', 'SERGIO', 'IDARRAGA AGUIRRE', 3014814875, 'K1mikaze@proton.me', 'fe4d3915c9f1a62fea224fa37dab82f805310b1d');
+(1112759822, 1, '2024-10-16 23:39:04', 'SERGIO', 'IDARRAGA', '3014814875', 'K1mikaze@proton.me', 'fe4d3915c9f1a62fea224fa37dab82f805310b1d');
 
 --
 -- Indexes for dumped tables
@@ -242,12 +261,35 @@ ALTER TABLE `Objects`
   ADD UNIQUE KEY `Name` (`Name`);
 
 --
+-- Indexes for table `REMOVED_OBJECTS`
+--
+ALTER TABLE `REMOVED_OBJECTS`
+  ADD PRIMARY KEY (`IDO`),
+  ADD UNIQUE KEY `Name` (`Name`);
+
+--
+-- Indexes for table `REMOVED_USERS`
+--
+ALTER TABLE `REMOVED_USERS`
+  ADD PRIMARY KEY (`IDU`),
+  ADD UNIQUE KEY `CC` (`CC`),
+  ADD UNIQUE KEY `Phone` (`Phone`);
+
+--
+-- Indexes for table `REMOVED_WORKERS`
+--
+ALTER TABLE `REMOVED_WORKERS`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Phone` (`Phone`);
+
+--
 -- Indexes for table `Users`
 --
 ALTER TABLE `Users`
   ADD PRIMARY KEY (`IDU`),
   ADD UNIQUE KEY `Phone` (`Phone`),
-  ADD UNIQUE KEY `CC` (`CC`);
+  ADD UNIQUE KEY `CC` (`CC`),
+  ADD UNIQUE KEY `Phone_2` (`Phone`);
 
 --
 -- Indexes for table `Users_Objects_Deliveries`
@@ -262,7 +304,10 @@ ALTER TABLE `Users_Objects_Deliveries`
 -- Indexes for table `Workers`
 --
 ALTER TABLE `Workers`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Phone` (`Phone`),
+  ADD UNIQUE KEY `Phone_2` (`Phone`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -272,7 +317,7 @@ ALTER TABLE `Workers`
 -- AUTO_INCREMENT for table `Deliveries`
 --
 ALTER TABLE `Deliveries`
-  MODIFY `IDD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDD` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Drivers`
@@ -284,19 +329,25 @@ ALTER TABLE `Drivers`
 -- AUTO_INCREMENT for table `Objects`
 --
 ALTER TABLE `Objects`
+  MODIFY `IDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `REMOVED_OBJECTS`
+--
+ALTER TABLE `REMOVED_OBJECTS`
   MODIFY `IDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `IDU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDU` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Users_Objects_Deliveries`
 --
 ALTER TABLE `Users_Objects_Deliveries`
-  MODIFY `IDT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDT` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

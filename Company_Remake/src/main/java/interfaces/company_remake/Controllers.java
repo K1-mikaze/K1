@@ -196,6 +196,7 @@ public class Controllers {
         Logged_Header_label.setText("Welcome " + Name);
         Logged.setVisible(true);
         Name_Header.setVisible(true);
+        Users_info_Listview.getItems().addAll(cn.Get_All_User_Info());
     }
 
     //Make the window draggable
@@ -297,7 +298,7 @@ public class Controllers {
                 if (C_ID_Field.getText().isEmpty()) {
                     C_ID_Field.setText("0");
                 }
-                cn.Create_User(Integer.parseInt(C_ID_Field.getText()), Values);
+                cn.Create_User(Long.parseLong(C_ID_Field.getText()), Values);
                 C_ID_Field.setText("");
                 C_Name_Field.setText("");
                 C_Surname_Field.setText("");

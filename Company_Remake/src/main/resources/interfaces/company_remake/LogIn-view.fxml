@@ -35,7 +35,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="Log" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #313131;" visible="false">
+      <Pane fx:id="Log" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #313131;">
          <children>
             <PasswordField fx:id="Password_txt" layoutX="101.0" layoutY="200.0" prefHeight="26.0" prefWidth="368.0" />
             <TextField fx:id="User_txt" layoutX="104.0" layoutY="92.0" prefHeight="26.0" prefWidth="368.0" />
@@ -142,7 +142,7 @@
             </ImageView>
          </children>
       </Pane>
-      <AnchorPane fx:id="Logged" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #343434;">
+      <AnchorPane fx:id="Logged" layoutX="94.0" layoutY="70.0" prefHeight="382.0" prefWidth="548.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #343434;" visible="false">
          <children>
             <ListView fx:id="Users_info_Listview" layoutX="48.0" layoutY="87.0" prefHeight="262.0" prefWidth="452.0" />
             <Label layoutX="48.0" layoutY="14.0" prefHeight="30.0" prefWidth="62.0" text="Sales" textFill="WHITE">

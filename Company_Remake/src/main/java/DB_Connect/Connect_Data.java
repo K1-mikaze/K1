@@ -111,18 +111,18 @@ public class Connect_Data {
         return userfound;
     }
 
-    public void Create_User(int CC, String[] Values) {
+    public void Create_User(long CC, String[] Values) {
 
         //0=Name,1=Surname,2=Address,3=Phone,4=Item_Name,5=Driver_Phone
         try {
             Connection cn = DriverManager.getConnection(url, Logged, Password);
             if (CC != 0) {
                 PreparedStatement InsertUser = cn.prepareStatement("INSERT INTO Users(CC,Name,Surname,Phone) SELECT ?,?,?,? WHERE NOT EXISTS ( SELECT * FROM Users WHERE CC = ? OR Name = ?)");
-                InsertUser.setInt(1, CC);
+                InsertUser.setLong(1, CC);
                 InsertUser.setString(2, Values[0].toUpperCase());
                 InsertUser.setString(3, Values[1].toUpperCase());
                 InsertUser.setString(4, Values[3]);
-                InsertUser.setInt(5, CC);
+                InsertUser.setLong(5, CC);
                 InsertUser.setString(6, Values[0].toUpperCase());
                 InsertUser.executeUpdate();
             } else {
@@ -281,7 +281,7 @@ public class Connect_Data {
                 InsertIntoRemoved.setString(3, Item_id.getString(3));
                 InsertIntoRemoved.executeUpdate();
 
-                PreparedStatement Delete_Item = cn.prepareStatement("UPDATE Objects SET Name ='REMOVED',Type ='REMOVED' WHERE Name = ?");
+                PreparedStatement Delete_Item = cn.prepareStatement("UPDATE Objects SET Name = NULL ,Type ='REMOVED' WHERE Name = ?");
                 Delete_Item.setString(1, Item);
                 Delete_Item.executeUpdate();
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 18, 2024 at 06:30 AM
+-- Generation Time: Oct 19, 2024 at 06:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -127,7 +127,11 @@ INSERT INTO `Logs` (`IDL`, `Log`) VALUES
 (1112759822, '2024-10-17 10:37:01'),
 (1112759822, '2024-10-17 22:34:55'),
 (1112759822, '2024-10-17 23:18:51'),
-(1112759822, '2024-10-17 23:22:44');
+(1112759822, '2024-10-17 23:22:44'),
+(1112759822, '2024-10-18 20:53:40'),
+(1112759822, '2024-10-18 20:58:04'),
+(1112759822, '2024-10-18 21:10:22'),
+(1112759822, '2024-10-18 21:12:51');
 
 -- --------------------------------------------------------
 
@@ -184,7 +188,8 @@ INSERT INTO `Objects` (`IDO`, `Type`, `Name`) VALUES
 (8, 'Watch', 'YOR'),
 (9, 'Watch', 'YOG'),
 (10, 'Watch', 'YOGR'),
-(11, 'Watch', 'DIB');
+(11, 'Watch', 'DIB'),
+(12, 'Watch', 'RMB');
 
 -- --------------------------------------------------------
 
@@ -480,7 +485,7 @@ ALTER TABLE `Drivers`
 -- AUTO_INCREMENT for table `Objects`
 --
 ALTER TABLE `Objects`
-  MODIFY `IDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `IDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `Users`
@@ -516,6 +521,24 @@ ALTER TABLE `Logs`
 --
 ALTER TABLE `Number_Units`
   ADD CONSTRAINT `Number_Units_ibfk_1` FOREIGN KEY (`IDO_2`) REFERENCES `Objects` (`IDO`);
+
+--
+-- Constraints for table `REMOVED_OBJECTS`
+--
+ALTER TABLE `REMOVED_OBJECTS`
+  ADD CONSTRAINT `REMOVED_OBJECTS_ibfk_1` FOREIGN KEY (`IDO`) REFERENCES `Objects` (`IDO`);
+
+--
+-- Constraints for table `REMOVED_USERS`
+--
+ALTER TABLE `REMOVED_USERS`
+  ADD CONSTRAINT `REMOVED_USERS_ibfk_1` FOREIGN KEY (`IDU`) REFERENCES `Users` (`IDU`);
+
+--
+-- Constraints for table `REMOVED_WORKERS`
+--
+ALTER TABLE `REMOVED_WORKERS`
+  ADD CONSTRAINT `REMOVED_WORKERS_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `Workers` (`ID`);
 
 --
 -- Constraints for table `Users_Objects_Deliveries`
